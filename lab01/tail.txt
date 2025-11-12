@@ -1,0 +1,43 @@
+sgi-cad		17004/tcp			# Cluster Admin daemon
+binkp		24554/tcp			# binkp fidonet protocol
+asp		27374/tcp			# Address Search Protocol
+asp		27374/udp
+csync2		30865/tcp			# cluster synchronization tool
+dircproxy	57000/tcp			# Detachable IRC Proxy
+tfido		60177/tcp			# fidonet EMSI over telnet
+fido		60179/tcp			# fidonet EMSI over TCP
+
+# Local services
+==> /etc/services <==
+sgi-cad		17004/tcp			# Cluster Admin daemon
+binkp		24554/tcp			# binkp fidonet protocol
+asp		27374/tcp			# Address Search Protocol
+asp		27374/udp
+csync2		30865/tcp			# cluster synchronization tool
+dircproxy	57000/tcp			# Detachable IRC Proxy
+tfido		60177/tcp			# fidonet EMSI over telnet
+fido		60179/tcp			# fidonet EMSI over TCP
+
+# Local services
+
+==> /etc/services <==
+sgi-cad		17004/tcp			# Cluster Admin daemon
+binkp		24554/tcp			# binkp fidonet protocol
+asp		27374/tcp			# Address Search Protocol
+asp		27374/udp
+csync2		30865/tcp			# cluster synchronization tool
+dircproxy	57000/tcp			# Detachable IRC Proxy
+tfido		60177/tcp			# fidonet EMSI over telnet
+fido		60179/tcp			# fidonet EMSI over TCP
+
+# Local services
+-rw-r--r-- 1 root root   633 Feb 27  2024 _systemd-delta
+-rw-r--r-- 1 root root  1179 Feb 27  2024 _systemd-inhibit
+-rw-r--r-- 1 root root   330 Feb 27  2024 _systemd-path
+-rw-r--r-- 1 root root  4356 Feb 27  2024 _systemd-run
+-rw-r--r-- 1 root root   744 Feb 27  2024 _systemd-tmpfiles
+-rw-r--r-- 1 root root  2170 Feb 27  2024 _timedatectl
+-rw-r--r-- 1 root root  8717 Feb 27  2024 _udevadm
+
+/usr/src:
+total 0
