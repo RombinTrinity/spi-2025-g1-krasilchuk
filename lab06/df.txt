@@ -1,0 +1,19 @@
+Filesystem      1K-blocks      Used  Available Use% Mounted on
+none              3986020         0    3986020   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+none              3986020         4    3986016   1% /mnt/wsl
+drivers         499032060 348867848  150164212  70% /usr/lib/wsl/drivers
+/dev/sdd       1055762868   1633168 1000426228   1% /
+none              3986020        76    3985944   1% /mnt/wslg
+none              3986020         0    3986020   0% /usr/lib/wsl/lib
+rootfs            3981004      2672    3978332   1% /init
+none              3986020       828    3985192   1% /run
+none              3986020         0    3986020   0% /run/lock
+none              3986020         0    3986020   0% /run/shm
+none              3986020        76    3985944   1% /mnt/wslg/versions.txt
+none              3986020        76    3985944   1% /mnt/wslg/doc
+C:\             499032060 348867848  150164212  70% /mnt/c
+snapfuse            75776     75776          0 100% /snap/core22/2139
+snapfuse            72320     72320          0 100% /snap/fcal/856
+snapfuse            52224     52224          0 100% /snap/snapd/25577
+tmpfs              797204        20     797184   1% /run/user/1000
+snapfuse            75776     75776          0 100% /snap/core22/2163
