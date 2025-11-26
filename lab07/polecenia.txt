@@ -1,0 +1,13 @@
+cat - łączy pliki
+sort - sortuje wiersze teksku
+uniq - sgłasza lun polija powtarzające się wiersze
+wc - wypisuje liczbę wierszy, wynarów oraz baitów w każdym pliku
+grep - wypisuje wiersze pasujące do wzorca
+head - zwraca początek pliku
+tail - zwraca koniec pliku
+tee - pobiera dane ze standardowego wejścia, zapisuje je do plików i wypisuje na standardowym wyjściu
+apropos - przeszukuje nazwy i opisy stron podręcznika systemowego
+mkdir - utworz nowy katalog
+ls - wypisuje lista elementów w kataloge
+rm - usuń elementa
+touch - utworz nowy plik
