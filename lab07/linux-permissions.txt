@@ -1,0 +1,30 @@
+1.Tak
+2.Nie
+3.Nie
+4.Tak
+5.1010001 = 81
+6.11011 = 27
+7.12 = 1100
+8.Tryb wszystkich plików bendzie rwx rwx rwx
+9.Tryb wszystkich plików bendzie r-- r-- r--
+10.Tryb wszystkich plików bendzie rw- r-- --x
+11.umask
+12.Umask w Linuxie określa domyślne uprawnienia nowych plików i katalogów
+13.rw- r-- r--
+14.rwx r-x r-x
+15.Oznacza to, że użytkownik może poruszać się po katalogu i poruszać się po nim.
+16.Oznacza to, że użytkownik może tworzyć i usuwać wpisy w tym katalogu.
+17.Nazywa się to bitem lepkim i jest używany w systemie Linux do tworzenia współdzielonych katalogów (na przykład katalogu /tmp).
+18.Nie. Jeśli bit lepki jest aktywny, tylko właściciel pliku będzie mógł go usunąć (nawet jeśli druga grupa ma pełne uprawnienia)
+19.Nie. Bit „sticky” to wielka litera „T”, co oznacza, że bit „sticky” jest ustawiony dla tego katalogu, ale uprawnienia do wykonywania nie są ustawione. W rezultacie żaden użytkownik poza nim samym nie może przejść przez ten katalog.
+20.To jest polecenie chown. Bezpośrednio po nim należy podać nowego właściciela pliku i nazwę pliku, który chcemy zmienić.
+21.To jest polecenie chgrp.
+22.Aby zmienić grupy rekurencyjnie, należy użyć opcji -R polecenia chgrp.
+23.Aby polecenie chgrp zapisało wszystkie dokonane zmiany, należy określić opcję -c.
+24.SUID służy do wykonania polecenia jako właściciel pliku, a nie użytkownik, który wydał polecenie.
+25.Polecenie passwd jest wykonywane z włączonym SUID w systemie Linux. Umożliwia ono użytkownikom zmianę własnych haseł bez możliwości zmiany haseł innych osób.
+26.Możliwe jest ustawienie SUID poprzez wykonanie polecenia „chmod u+s file” lub „chmod 4777 file”
+27.Identyfikator GUID służy do wykonania polecenia jako członek grupy będącej właścicielem pliku, a nie grupy, do której należy użytkownik, który wydał polecenie.
+28.Możliwe jest ustawienie GUID poprzez wykonanie polecenia „chmod g+s file” lub „chmod 2777 file”
+29.Nie
+30.Mała litera t oznacza, że bit „sticky” jest ustawiony, natomiast wielka litera T oznacza, że bit „sticky” jest ustawiony, ale uprawnienie do wykonywania nie jest ustawione.
