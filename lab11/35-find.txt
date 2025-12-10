@@ -1,0 +1,160 @@
+1. Znajdź pliki według nazwy w bieżącym katalogu
+Znajdź wszystkie pliki o nazwie tecmint.txt w bieżącym katalogu roboczym.
+
+# find . -name tecmint.txt
+
+./tecmint.txt
+2. Znajdź pliki w katalogu domowym
+Znajdź wszystkie pliki w katalogu /home o nazwie tecmint.txt.
+
+# find /home -name tecmint.txt
+
+/home/tecmint.txt
+3. Znajdź pliki według nazwy, ignorując wielkość liter
+Znajdź wszystkie pliki o nazwie tecmint.txt, które zawierają zarówno wielkie, jak i małe litery, w katalogu /home.
+
+# find /home -iname tecmint.txt
+
+./tecmint.txt
+./Tecmint.txt
+4. Znajdź katalogi według nazwy
+Znajdź wszystkie katalogi o nazwie Tecmint w katalogu /.
+
+# find / -type d -name Tecmint
+
+/Tecmint
+5. Znajdź pliki PHP według nazwy
+Znajdź wszystkie pliki PHP o nazwie tecmint.php w bieżącym katalogu roboczym.
+
+# find . -type f -name tecmint.php
+
+./tecmint.php
+6. Znajdź wszystkie pliki PHP w katalogu
+Znajdź wszystkie pliki PHP w katalogu.
+
+# find . -type f -name "*.php"
+
+./tecmint.php
+./login.php
+./index.php
+7. Znajdź pliki z uprawnieniami 777
+Znajdź wszystkie pliki z uprawnieniami 777.
+
+# find . -type f -perm 0777 -print
+8. Znajdź pliki bez uprawnień 777
+Znajdź wszystkie pliki bez uprawnień 777.
+
+# find / -type f ! -perm 777
+9. Znajdź pliki SGID z uprawnieniami 644
+Znajdź wszystkie pliki bitowe SGID z uprawnieniami ustawionymi na 644.
+
+# find / -perm 2644
+10. Znajdź pliki Sticky Bit z uprawnieniami 551
+Znajdź wszystkie pliki zestawu Sticky Bit z uprawnieniami 551.
+
+# find / -perm 1551
+11. Znajdź pliki SUID
+Znajdź wszystkie pliki z zestawami SUID.
+
+# find / -perm /u=s
+12. Znajdź pliki SGID
+Znajdź wszystkie pliki zestawów SGID.
+
+# find / -perm /g=s
+13. Znajdź pliki tylko do odczytu
+Znajdź wszystkie pliki tylko do odczytu.
+
+# find / -perm /u=r
+14. Znajdź pliki wykonywalne
+Znajdź wszystkie pliki wykonywalne.
+
+# find / -perm /a=x
+15. Znajdź pliki z uprawnieniami 777 i chmod na 644
+Znajdź wszystkie pliki z uprawnieniami 777 i użyj polecenia chmod, aby ustawić uprawnienia na 644.
+
+# find / -type f -perm 0777 -print -exec chmod 644 {} \;
+16. Znajdź katalogi z uprawnieniami 777 i ustaw chmod na 755
+Znajdź wszystkie katalogi z uprawnieniami 777 i użyj polecenia chmod, aby ustawić uprawnienia na 755.
+
+# find / -type d -perm 777 -print -exec chmod 755 {} \;
+17. Znajdź i usuń pojedynczy plik
+Aby znaleźć pojedynczy plik o nazwie tecmint.txt i go usunąć:
+
+# find . -type f -name "tecmint.txt" -exec rm -f {} \;
+18. Znajdź i usuń wiele plików
+Aby znaleźć i usunąć wiele plików, takich jak .mp3 lub .txt, użyj:
+
+# find . -type f -name "*.txt" -exec rm -f {} \;
+
+LUB
+
+# find . -type f -name "*.mp3" -exec rm -f {} \;
+19. Znajdź wszystkie puste pliki
+Aby znaleźć wszystkie puste pliki w określonej ścieżce.
+
+# find /tmp -type f -empty
+20. Znajdź wszystkie puste katalogi
+Aby umieścić wszystkie puste katalogi w określonej ścieżce.
+
+# find /tmp -type d -empty
+21. Zapisz wszystkie ukryte pliki
+Aby znaleźć wszystkie ukryte pliki, użyj poniższego polecenia.
+
+# find /tmp -type f -name ".*"
+22. Znajdź pojedynczy plik na podstawie użytkownika
+Aby znaleźć wszystkie lub pojedyncze pliki o nazwie tecmint.txt w katalogu /root właściciela root.
+
+# find / -user root -name tecmint.txt
+23. Znajdź wszystkie pliki na podstawie użytkownika
+Aby znaleźć wszystkie pliki należące do użytkownika Tecmint w katalogu /home.
+
+# find /home -user tecmint
+24. Znajdź wszystkie pliki w oparciu o grupę
+Aby znaleźć wszystkie pliki należące do grupy Developer w katalogu /home.
+
+# find /home -group developer
+25. Znajdź określone pliki użytkownika
+Aby znaleźć wszystkie pliki .txt użytkownika Tecmint w katalogu /home.
+
+# find /home -user tecmint -iname "*.txt"
+26. Znajdź pliki modyfikowane w ciągu ostatnich 50 dni
+Aby znaleźć wszystkie pliki, które zostały zmodyfikowane 50 dni temu.
+
+# find / -mtime 50
+27. Znajdź pliki, do których uzyskano dostęp w ciągu ostatnich 50 dni
+Aby znaleźć wszystkie pliki, do których uzyskano dostęp w ciągu ostatnich 50 dni.
+
+# find / -atime 50
+28. Znajdź pliki zmodyfikowane w ciągu ostatnich 50–100 dni
+Aby znaleźć wszystkie pliki zmodyfikowane ponad 50 dni temu i mniej niż 100 dni temu.
+
+# find / -mtime +50 –mtime -100
+29. Znajdź pliki zmienione w ciągu ostatniej godziny
+Aby znaleźć wszystkie pliki zmienione w ciągu ostatniej godziny.
+
+# find / -cmin -60
+30. Znajdź pliki zmodyfikowane w ciągu ostatniej godziny
+Aby znaleźć wszystkie pliki zmodyfikowane w ciągu ostatniej godziny.
+
+# find / -mmin -60
+31. Znajdź pliki, do których uzyskano dostęp w ciągu ostatniej godziny
+Aby znaleźć wszystkie pliki, do których uzyskano dostęp w ciągu ostatniej godziny.
+
+# find / -amin -60
+32. Znajdź pliki o rozmiarze 50 MB
+Aby znaleźć wszystkie pliki o rozmiarze 50 MB, użyj:
+
+# find / -size 50M
+33. Znajdź rozmiar między 50 MB a 100 MB
+Aby znaleźć wszystkie pliki o rozmiarze większym niż 50 MB i mniejszym niż 100 MB.
+
+# find / -size +50M -size -100M
+34. Znajdź i usuń pliki o rozmiarze 100 MB
+Aby znaleźć wszystkie pliki o rozmiarze 100 MB i usunąć je za pomocą jednego polecenia.
+
+# find / -type f -size +100M -exec rm -f {} \;
+35. Znajdź i usuń określone pliki
+Znajdź wszystkie pliki .mp3 o rozmiarze większym niż 10 MB i usuń je za pomocą jednego polecenia.
+
+# find / -type f -name *.mp3 -size +10M -exec rm {} \;
+
