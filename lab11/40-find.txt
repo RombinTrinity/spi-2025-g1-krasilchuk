@@ -1,0 +1,431 @@
+1. Znajdź określone pliki według nazwy lub rozszerzenia
+Aby wyszukać konkretny plik, uruchom poniższe polecenie z katalogu głównego (/). Polecenie zawiera dokładną nazwę pliku, którego szukasz.
+
+find . -name file22.txt
+
+./test/file22.txt
+./sales/file22.txt
+
+2. Szukanie konkretnych plików w innym katalogu
+W naszym przypadku będziemy szukać wszystkich plików zaczynających się na litery znajdujące się w katalogu testowym.
+
+find ./test -name file*
+
+./test/file22.txt
+./test/file30.doc
+./test/file1.txt
+./test/file5,doc
+
+3. Wyszukiwanie plików według rozszerzenia
+Aby znaleźć plik w systemie Linux z określonym rozszerzeniem, dodaj je do polecenia.
+
+find . -name *.txt
+
+./test/subtest/subfil.txt
+./test/file22.txt
+./test/file1.txt
+./home1/files32.txt
+./home2/file22.txt
+./qa/tags.txt
+
+4. Znajdź pliki i katalogi według nazwy
+Użyj poniższego polecenia, aby wyszukać pliki i katalogi rozpoczynające się na litery qa. Na naszym komputerze mamy pliki qatree.txt i qa.txt, a także katalog o nazwie qa.
+
+find ./ -name "qa*"
+
+./test/qatree.pdf
+./test/qa.txt
+./home/qa
+
+5. Znajdź tylko pliki lub katalogi
+W przypadku plików użyj przełącznika typu f.
+
+find ./ -type f -name "qa*"
+
+./test/qatree.pdf
+./test/qa.txt
+
+Dodaj opcję typu d, aby zlokalizować tylko katalogi.
+
+find ./ -type d -name "qa*"
+
+./home/qa
+
+6. Polecenie find bez uwzględniania wielkości liter
+Wszystkie wyszukiwania z opcją -name uwzględniają wielkość liter i nie zwracają wyników zawierających wielkie litery. Aby uzyskać wyniki z uwzględnieniem wielkości liter, użyj opcji -iname.
+
+find ./ -iname "qa*"
+
+./test/qatree.pdf
+./test/qa.txt
+./test/QAtest.txt
+./home/qa
+
+7. Wyszukaj plik w wielu katalogach
+Aby znaleźć pliki w różnych katalogach, dodaj ich ścieżki w poleceniu. W naszym przypadku sprawdzimy katalogi test i numeric.
+
+find ./test ./numeric -name file22.txt -type f
+
+./test/file22.txt
+/root/numeric/file22.txt
+
+8. Znajdź wiele plików z różnymi rozszerzeniami we wszystkich katalogach
+Możesz użyć polecenia find, aby zlokalizować wiele plików o różnych rozszerzeniach, takich jak *.doc, *.txt *.pdf itd. Można to zrobić oddzielnie, po jednym rozszerzeniu na raz lub za pomocą jednego polecenia, które obejmuje wszystkie żądane rozszerzenia.
+
+find . -type f ( -name "*.txt" -o -name "*.pdf" -o -name "*.doc" )
+
+./test/subtest/subfil.txt
+./test/qatree.pdf
+./test/file22.txt
+./test/qa.txt
+./test/file30.doc
+./books/acro.pdf
+./data1/FILE22.txt
+./docs/files32.txt
+
+9. Znajdź pliki zawierające określony tekst
+Czasami chcesz uzyskać dostęp do pliku zawierającego określony tekst, ale nie możesz sobie przypomnieć jego nazwy ani lokalizacji. To polecenie pozwala znaleźć wszystkie pliki zawierające tekst docelowy.
+
+Aby wyszukać wszystkie pliki zawierające słowo „hiperkonwergencja”, użyj:
+
+find / -type f -exec grep -l -i "hyperconvergence" {} ;
+
+/root/numeric/hci
+/root/HCIP
+
+Opcja –i włącza ignorowanie wielkości liter przez polecenie i pozwala na znalezienie tekstu pisanego wielkimi literami, np. hiperkonwergencja, Hiperkonwergencja itd.
+
+Aby wyszukać pliki w określonym katalogu, wystarczy dodać je do polecenia.
+
+find ./numeric -type f -exec grep -l -i "hyperconvergence" {} ;
+
+./numeric/hci
+
+10. Znajdź pliki o określonym rozmiarze – równym 30 MB
+Aby wyszukać, znajdź wszystkie pliki o rozmiarze 30 MB
+
+find / -size 30M
+
+11. Znajdź pliki większe niż określony rozmiar
+
+find -size +2M
+
+. /Downloads/ubuntu18043.iso 
+./.cache/pip/http/6/e/3/8/3/6e38383f41850c3e5705d48116bc52f81b92a80500f414305057 7a9c
+
+12. Znajdź pliki mniejsze niż 10 MB w bieżącym katalogu
+
+find . -type f -size -10M
+
+13. Znajdź pliki o rozmiarze od 100 do 200 MB
+Wyszukując pliki o określonym rozmiarze, np. od 100 do 200 MB
+
+find / -size +100M -size -200M
+
+14. Szukaj katalogów większych niż 20 KB
+
+find / -type d -size +20k
+
+15. Znajdź puste pliki i katalogi.
+
+Dla plików
+
+find ./ -type f -size 0
+
+lub
+
+find ./ -type f –empty
+
+Dla katalogów
+
+find ./ -type d –empty
+
+16. Znajdź pliki według wieku lub czasu modyfikacji
+Znajdź pliki starsze niż n dni
+
+find /path/ -type f -name '*.txt' -mtime +8
+
+17. Znajdź plik lub katalog według daty modyfikacji
+Wyszukane zostaną pliki zmodyfikowane w ciągu ostatnich 17 godzin
+
+find . -mtime -17 -type f
+
+Dla katalogów
+
+find . -mtime -10 -type d
+
+18. Znajdź pliki na podstawie dostępu lub modyfikacji
+Znajdź pliki na podstawie daty lub godziny dostępu. Pozwala to wyświetlić pliki, do których uzyskano lub nie uzyskano dostępu w określonym czasie.
+
+Aby wyświetlić pliki, do których nie uzyskano dostępu w ciągu ostatnich 10 dni w katalogu domowym.
+
+find /home -atime +10
+
+Pliki, do których uzyskano dostęp dokładnie 10 dni temu
+
+find /home -atime 10
+
+Dostęp w ciągu ostatnich 10 dni
+
+find /home -atime -10
+
+19. Znajdź pliki zmodyfikowane w ciągu ostatnich n dni
+Możesz również wyszukać pliki w katalogu /home zmodyfikowane w ciągu ostatnich 10 dni za pomocą polecenia:
+
+find /home -mtime -10
+
+20. Znajdź pliki zmodyfikowane w określonym okresie. Na przykład wszystkie pliki zmodyfikowane między 6 a 15 dniami temu w katalogu domowym.
+
+find /home -type f -mtime +6 -mtime -15
+
+21. Files and directories accessed within the last 10 minutes
+To find the files accessed within the last 10 minutes, use the -amin option.
+
+find . -amin -10 -type f
+
+./.bash_history
+./.profileroot@ubuntu1804:~#
+
+Katalogi 
+
+find . -amin -10 -type d
+
+22. Znajdź pliki z uprawnieniami 777
+
+find -perm 777
+
+./file1
+
+23. Znajdź pliki, do których właściciel ma prawo zapisu
+Teraz użyjemy znaku „/”, aby wyszukać pliki, do których właściciel, grupa lub inni użytkownicy mają prawo zapisu.
+
+find -perm /222
+.
+./file2
+./file3
+./file1
+
+find -perm -220
+
+./file2
+./file1
+
+24. Znajdź pliki należące do użytkownika
+Znajdź wszystkie pliki należące do Jacka
+
+find /home -user jack
+
+/home/jack
+/home/jack/examples.desktop
+/home/jack/.gnupg
+/home/jack/.gnupg/private-keys-v1.d
+/home/jack/ans.cgi
+
+25. Znajdź określone pliki należące do użytkownika
+Znajdź wszystkie pliki tekstowe należące do Jacka
+
+find /home -user jack -iname "*.txt"
+
+/home/jack/docs/file32.txt
+
+26. Znajdź i wyświetl pliki i katalogi wraz z ich uprawnieniami
+
+find -name "*.conf" | ls -l
+
+total 120
+drwxr-xr-x 2 root root 4096 Dec 31 13:19 backup2
+drwxr-xr-x 2 root root 4096 Jan 4 11:57 Desktop
+drwxr-xr-x 2 root root 4096 Dec 31 11:50 Documents
+drwxr-xr-x 2 root root 4096 Dec 31 12:27 Downloads
+-rw-r--r-- 1 root root 0 Jan 4 12:02 file22.doc
+drwxr-xr-x 2 root root 4096 Jan 4 12:14 file23
+-rw-r--r-- 1 root root 0 Jan 4 12:23 file23.txt
+
+27. Znajdź pliki i zmień uprawnienia
+Znajdź i zmień uprawnienia określonych typów plików. W naszym przypadku będziemy pracować z plikami PHP z różnymi uprawnieniami, jak pokazano poniżej.
+
+jack@ubuntu1804:~/ver$ ls -la
+
+total 8
+drwxrwxr-x 2 jack jack 4096 Jan 3 14:11 .
+drwxr-xr-x 8 jack jack 4096 Jan 3 14:05 ..
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:06 ans.php
+-rw-rw-r-- 1 jack jack 0 Jan 3 14:11 base.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:06 query.php
+-rw-rw-r-- 1 jack jack 0 Jan 3 14:11 qust.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:06 text.php
+-rw-rw-r-- 1 jack jack 0 Jan 3 14:11 vary.php
+
+find ver -name "*.php" -type f -exec chmod 755 {} ;
+
+Polecenie wyszukuje pliki PHP w katalogu ver, a następnie ustawia ich uprawnienia na 755 (rwxr-xr-x)
+
+jack@ubuntu1804:~/ver$ ls -la
+total 8
+drwxrwxr-x 2 jack jack 4096 Jan 3 14:11 .
+drwxr-xr-x 8 jack jack 4096 Jan 3 14:05 ..
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:06 ans.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:11 base.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:06 query.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:11 qust.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:06 text.php
+-rwxr-xr-x 1 jack jack 0 Jan 3 14:11 vary.php
+
+28. Znajdź i zmień uprawnienia plików i katalogów
+Znajdź pliki z uprawnieniami 644 i zmień je na 655.
+
+find . -type f -perm 644 -exec chmod 655 {} ;
+Możesz również wyszukać katalogi z uprawnieniami 644 i zastąpić je uprawnieniami 755.
+
+find . -type d -perm 644
+
+./docs
+
+
+Katalog docs ma uprawnienia 644.
+
+drwxrwxr-x 2 jack jack 4096 Jan 3 12:45 docs
+Aby ustawić uprawnienia na 755, uruchamiamy:
+
+find . -type d -perm 644 -exec chmod 755 {} ;
+
+Teraz możemy ponownie sprawdzić, jakie dokładnie są uprawnienia 755.
+
+find . -type d -perm 755
+.
+./docs
+
+Z powyższego widać, że katalogi root i docs mają uprawnienia 755.
+
+Polecenie ls –la zwraca następujące szczegóły:
+
+drwxr-xr-x 2 jack jack 4096 Jan 3 12:45 docs
+
+29. Znajdź i skopiuj pliki lub katalogi
+Znajdź i skopiuj określony plik do katalogu
+
+Poniższe polecenie znajdzie plik file22.txt i skopiuje go do katalogu ~/tmp/images.
+
+find -iname file22.txt -exec cp {} ~/tmp/images ;
+
+Znajdź i skopiuj jeden typ plików do katalogu
+
+Aby znaleźć pliki, takie jak obrazy z rozszerzeniem jpg, w bieżącym katalogu i skopiować je do innej lokalizacji, np. folderu z obrazami, użyj:
+
+find -iname '*.jpg' -exec cp {} ~/tmp/images ;
+
+Spowoduje to znalezienie i skopiowanie wszystkich plików jpg do folderu ~/tmp/images.
+
+30. Znajdź i skopiuj jeden plik do wielu katalogów
+Znajdź i skopiuj jeden plik do wielu katalogów.
+
+find ~/tmp/dir1/ ~/tmp/dir2/ $HOME/3/ -maxdepth 0 -exec cp ~/numeric/hci {} ;
+
+Spowoduje to znalezienie pliku hci i skopiowanie go do trzech katalogów: /tmp/dir1/ /tmp/dir2/ i $HOME/3/
+
+31. Znajdź i przenieś pliki do innego katalogu
+Aby przenieść znany plik z jednego katalogu do innego. Aby przenieść plik universal.php;
+
+find ~/folder/ -type f -name universal.php -exec mv {} ~/numeric/ ;
+
+Wyszukaj i przenieś pliki z określonym rozszerzeniem do innego katalogu
+
+find ~/numeric/ -type f -name '*.php' -exec mv {} ~/folder/ ;
+
+32. Znajdź określone pliki i przenieś je do określonego innego folderu
+
+find -type f -name uni*.* -exec mv {} ~/unifiles/ ;
+
+Polecenie wyszukuje wszystkie pliki, których nazwy zaczynają się od „uni” i mają dowolne rozszerzenie. Następnie przenosi je do katalogu /unifiles/.
+
+33. Znajdź i przenieś pliki na podstawie wieku
+Znajdź i przenieś pliki starsze niż określona liczba dni do innej lokalizacji, takiej jak archiwum.
+
+find /path/ -type f -name '*.pdf' -mtime +20 -exec mv {} /backup1/ ;
+
+Spowoduje to wyszukanie plików PDF starszych niż 20 dni i przeniesienie ich do katalogu backup1.
+
+Znajdź i usuń pliki i katalogi
+Składnia wyszukiwania i usuwania plików lub katalogów w bieżącym katalogu to
+
+find . -type f -name "file to delete" -exec rm -f {} ; aby usunąć tylko pliki lub
+find . -type d -name "dir-to-delete" -exec rm -rf {} ; aby usunąć tylko katalogi
+
+34. Znajdź i usuń tylko określone pliki
+Aby znaleźć i usunąć pliki zaczynające się od til, użyj:
+
+find . -type f -name "til*" -exec rm {} ;
+
+Aby znaleźć i usunąć katalogi zaczynające się od til
+
+find . -type d -name "til*" -exec rm {} ;
+
+35. Usuń oba pliki i katalogi
+
+find . -name "til*" -exec rm -rf {} ;
+
+Spowoduje to usunięcie plików i katalogów zaczynających się na litery til.
+
+36. Usuwanie według rozszerzenia
+Poniżej znajdziesz informacje o tym, jak zlokalizować i usunąć wszystkie pliki txt w bieżącym katalogu. Zastąp plik txt innym rozszerzeniem, takim jak bak, pdf lub dowolnym innym, które chcesz usunąć.
+
+find . -type f -name "*.txt" -exec rm -f {} ;
+
+Jeśli chcesz, aby system wyświetlał monit o potwierdzenie przed usunięciem każdego pliku, dodaj opcję -i, jak pokazano poniżej.
+
+find . -type f -name "*.txt" -exec rm -i {} ;
+
+rm: remove regular empty file './File22.txt'? y
+rm: remove regular empty file './file22.txt'? y
+rm: remove regular empty file './file23.txt'?
+
+Domyślnie opcja -rm nie usuwa katalogów i należy użyć opcji –r, aby zapewnić rekurencyjne usuwanie. Gwarantuje to usunięcie pustych katalogów i tych zawierających pliki. Opcja -f wymusza usunięcie i jest używana zarówno do plików, jak i katalogów.
+
+37. Znajdź i usuń pliki starsze niż n dni
+Znajdź i usuń pliki kopii zapasowych starsze niż 20 dni z bieżącego katalogu.
+
+find . -type f -name '*.bak' -mtime +20 -exec rm {} ;
+
+Spowoduje to usunięcie wszystkich plików .bak starszych niż 20 dni.
+
+38. Znajdź i usuń tylko katalogi
+Aby usunąć katalog o nazwie dir22
+
+find . -type d -name dir22 -exec rm -rf {} ;
+
+Upewnij się, że zachowujesz wielkość liter w nazwie katalogu lub użyj opcji -iname.
+
+find . -type d -iname Dir22 -exec rm -rf {} ;
+
+Usuwa zarówno katalog Dir22, jak i dir22.
+
+Aby potwierdzić przed usunięciem, użyj opcji -i.
+
+find . -type d -iname Dir22 -exec rm -rf -i {} ;
+
+rm: remove directory ‘./Dir22’? n
+rm: remove directory ‘./dir22’? y
+
+W naszym przypadku wpisaliśmy n, aby zapisać katalog Dir22, który nie zostanie usunięty, i y, aby zapisać katalog Dir22, który zostanie usunięty.
+
+39. Znajdź i usuń puste pliki
+Możesz użyć dowolnego z poniższych poleceń, aby zlokalizować puste pliki i automatycznie je usunąć.
+
+find ./ -type f -size 0 -exec rm -f {} ;
+
+lub 
+
+find ./ -type f -size 0 | xargs rm -f
+
+lub 
+
+find ./ -type f -size 0 –delete
+
+40. Znajdź i usuń puste katalogi
+Aby usunąć puste katalogi, użyjemy opcji d.
+
+find ./ -type d -empty -exec rmdir {} ;
+
+Inną alternatywą jest użycie delete zamiast remove.
+
+find ./ -type d -empty -delete
